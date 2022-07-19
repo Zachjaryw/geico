@@ -10,6 +10,7 @@ def reset(dbx):
              'State':[],
              'ECR Eligable':[],
              'Question Responses':[]},dbx,st.secrets.filepath.rentonCAIC)
+
 reset(dbx)
 dbx = initializeToken(st.secrets.Token.token)
 data = fromDBX(dbx,st.secrets.filepath.rentonCAIC)
