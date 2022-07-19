@@ -9,7 +9,7 @@ def reset(dbx):
   toDBX(dbx,{'Claim Number':[],
              'State':[],
              'ECR Eligable':[],
-             'Question Responses':[]},dbx,st.secrets.filepath.rentonCAIC)
+             'Question Responses':[]},st.secrets.filepath.rentonCAIC)
 
 
 dbx = initializeToken(st.secrets.Token.token)
