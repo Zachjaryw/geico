@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.title('GEICO Claims Comprehensive Attourney Information Check-List')
+st.title('GEICO Claims Comprehensive Attorney Information Check-List')
 
 claim_number = st.text_input('Enter 16 digit claim number',key = 0)
 state = st.selectbox('Select state of accident',['Washington','Oregon'],key = 1)
