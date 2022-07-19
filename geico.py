@@ -33,27 +33,27 @@ with st.form('Claim Information'):
 if submit == True:
   if state == 'Washington':
     st.write(f'''
-    Claim Number: {claim_number}
-    State: {state}
-    No Coverage Concerns?: {q1}
-    Any amount of liability accepted?: {q2}
-    No indication of big damages?: {q3}
-    2 or less IP's?: {q4}
-    No Reports of DUI or other agg liability?: {q5}
+    Claim Number: {claim_number}\n
+    State: {state}\n
+    No Coverage Concerns?: {q1}\n
+    Any amount of liability accepted?: {q2}\n
+    No indication of big damages?: {q3}\n
+    2 or less IP's?: {q4}\n
+    No Reports of DUI or other agg liability?: {q5}\n
     ''')
     if True in q6:
       st.write(f'Anticipated billing through {hospital[q6.index(True)]}')
   elif state == 'Oregon':
     st.write(f'''
-    Claim Number: {claim_number}
-    State: {state}
-    No Coverage Concerns?: {q1}
-    Accepted 50% liability or over?: {q2}
-    No indiation of big damages?: {q3}
-    2 or less IP's?: {q4}
-    No reports of DUI or other agg liability?: {q5}
-    Consider if NPNP would apply: {q6}
-    PIP unlikely to exhaust?: {q7}
+    Claim Number: {claim_number}\n
+    State: {state}\n
+    No Coverage Concerns?: {q1}\n
+    Accepted 50% liability or over?: {q2}\n
+    No indiation of big damages?: {q3}\n
+    2 or less IP's?: {q4}\n
+    No reports of DUI or other agg liability?: {q5}\n
+    Consider if NPNP would apply: {q6}\n
+    PIP unlikely to exhaust?: {q7}\n
     ''')
     
  
