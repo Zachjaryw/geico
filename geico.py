@@ -11,7 +11,7 @@ with st.container():
     q3 = st.checkbox('No indication of big damages?',False)
     q4 = st.checkbox("2 or less IP's?", False)
     q5 = st.checkbox('No Reports of DUI or other agg liability?',False)
-    st.text('No anticipated biling through:')
+    st.text('Anticipated biling through:')
     harborview = st.checkbox('Harborview',False)
     Swedish = st.checkbox('Swedish',False)
     Providence = st.checkbox('Providence',False)
