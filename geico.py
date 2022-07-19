@@ -27,6 +27,7 @@ with st.form('Claim Information',clear_on_submit = True):
     q5 = st.checkbox('No reports of DUI or other agg liability?',False)
     q6 = st.checkbox('Consider if NPNP would apply',False)
     q7 = st.checkbox('PIP unlikely to exhaust?',False)
+  q8 = st.checkbox('Is this claim offer ECR eligable?',False)
   submit = st.form_submit_button()
 
 if submit == True:
@@ -42,6 +43,7 @@ if submit == True:
     ''')
     if True in q6:
       st.write(f'Anticipated billing through {hospital[q6.index(True)]}')
+    st.write(f'Is this claim offer ECR eligable?: {q8}')
   elif state == 'Oregon':
     st.write(f'''
     Claim Number: {claim_number}\n
@@ -53,6 +55,7 @@ if submit == True:
     No reports of DUI or other agg liability?: {q5}\n
     Consider if NPNP would apply: {q6}\n
     PIP unlikely to exhaust?: {q7}\n
+    Is this claim offer ECR eligable?: {q8}\n
     ''')
     
  
