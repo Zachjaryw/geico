@@ -129,7 +129,4 @@ if submit == True:
   data['State'].append(state)
   data['ECR Eligable'].append(q8)
   data['Question Responses'].append(printvalue)
-  st.write(data)
-
-if st.button('test'):
-  st.write(data)
+  toDBX(dbx,data,st.secrets.filepath.rentonCAIC)
