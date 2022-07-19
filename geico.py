@@ -11,7 +11,7 @@ def reset(dbx):
   toDBX(dbx,{'Claim Number':[],
              'State':[],
              'ECR Eligable':[],
-             'Question Responses':[]},'/R10/Renton/CAIC.json'})
+             'Question Responses':[]},'/R10/Renton/CAIC.json')
 
   
 reset()
