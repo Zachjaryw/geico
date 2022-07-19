@@ -14,7 +14,7 @@ def reset(dbx):
              'Question Responses':[]},'/R10/Renton/CAIC.json')
 
   
-reset()
+reset(dbx)
 
 data = fromDBX(dbx,'/R10/Renton/CAIC.json')
   
