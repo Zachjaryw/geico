@@ -2,9 +2,10 @@ import streamlit as st
 
 st.title('GEICO Claims Comprehensive Attourney Information Check-List')
 
+claim_number = st.text_input('Enter 16 digit claim number',key = 0)
+state = st.selectbox('Select state of accident',['Washington','Oregon'],key = 1)
+
 with st.form('Claim Information',clear_on_submit = True):
-  claim_number = st.text_input('Enter 16 digit claim number',key = 0)
-  state = st.selectbox('Select state of accident',['Washington','Oregon'],key = 1)
   q1 = st.checkbox('No Coverage Concerns?',False)
   if state == 'Washington':
     q2 = st.checkbox('Any amount of liability accepted?',False)
