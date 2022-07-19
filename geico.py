@@ -102,13 +102,13 @@ if submit == True:
       ''')
       if q11 == True:
         st.write(f'\tInjuries mentioned?: {q11_1}\n')
-       st.write(f'''
-       Claimant photos on file?: {q12}\n
-       Insured photos on file?: {q13}\n
-       Liabilty percentage?: {q14}\n
-       Accident type: {q15}\n
-       Claimant BI RI on file?: {q16}\n
-       Has attorney provided injury information?: {q17}\n
-       Insured RI to determine impact serverity, injuries of insd/clmt?: {q18}\n
-       ''')
+      st.write(f'''
+      Claimant photos on file?: {q12}\n
+      Insured photos on file?: {q13}\n
+      Liabilty percentage?: {q14}\n
+      Accident type: {q15}\n
+      Claimant BI RI on file?: {q16}\n
+      Has attorney provided injury information?: {q17}\n
+      Insured RI to determine impact serverity, injuries of insd/clmt?: {q18}\n
+      ''')
  
