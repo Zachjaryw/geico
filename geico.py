@@ -198,17 +198,17 @@ elif additional_info == True:
       Has attorney provided injury information?: {q17}\n
       Insured RI to determine impact serverity, injuries of insd/clmt?: {q18}\n
       '''
-  with st.form('Additional Info'):
-    add_0 = st.text_input('Name of spouse or domestic partner')
-    add_1 =st.text_input('Treatment Status Update')
-    add_2 =st.text_input('Medicare, Medicaid, ERISA, Tricare eligable?')
-    add_3 =st.text_input('Estimated Treatment Timeframe')
-    add_4 =st.text_input('Dx of Injuries (diagnosis)')
-    add_5 =st.text_input('Diagnosic testing done')
-    add_6 =st.text_input('Loss of Wages')
-    add_7 =st.text_input('Missed life events/daily activities')
-    add_8 =st.text_input('County/Venue of Accident')
-    formSubmit = st.form_submit_button()
+  
+  add_0 = st.text_input('Name of spouse or domestic partner')
+  add_1 =st.text_input('Treatment Status Update')
+  add_2 =st.text_input('Medicare, Medicaid, ERISA, Tricare eligable?')
+  add_3 =st.text_input('Estimated Treatment Timeframe')
+  add_4 =st.text_input('Dx of Injuries (diagnosis)')
+  add_5 =st.text_input('Diagnosic testing done')
+  add_6 =st.text_input('Loss of Wages')
+  add_7 =st.text_input('Missed life events/daily activities')
+  add_8 =st.text_input('County/Venue of Accident')
+  formSubmit = st.button()
     
   if formSubmit:
     additionalInformation = f'''
