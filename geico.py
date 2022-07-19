@@ -5,21 +5,15 @@ import numpy as np
 
 st.title('GEICO Claims Comprehensive Attorney Information Check-List')
 
-dbx = initializeToken(st.secrets.Token.token)
-
 def reset(dbx):
   toDBX(dbx,{'Claim Number':[],
              'State':[],
              'ECR Eligable':[],
-             'Question Responses':[]},'/R10/Renton/CAIC.json')
+             'Question Responses':[]},dbx,st.secrets.filepath.rentonCAIC)
 
-  
-reset(dbx)
+dbx = initializeToken(st.secrets.Token.token)
+data = fromDBX(dbx,st.secrets.filepath.rentonCAIC)
 
-data = fromDBX(dbx,'/R10/Renton/CAIC.json')
-  
-st.write(data)
-  
 claim_number = st.text_input('Enter 16 digit claim number',key = 0)
 state = st.selectbox('Select state of accident',['Washington','Oregon'],key = 1)
 with st.container():
@@ -69,8 +63,9 @@ with st.container():
   submit = st.button('Submit')
 
 if submit == True:
+  printvalue = ''
   if state == 'Washington':
-    st.write(f'''
+    printvalue = printvalue + f'''
     Claim Number: {claim_number}\n
     State: {state}\n
     No Coverage Concerns?: {q1}\n
@@ -78,19 +73,19 @@ if submit == True:
     No indication of big damages?: {q3}\n
     2 or less IP's?: {q4}\n
     No Reports of DUI or other agg liability?: {q5}\n
-    ''')
+    '''
     if True in q6:
-      st.write(f'Anticipated billing through {hospital[q6.index(True)]}')
-    st.write(f'Claim is ECR eligable?: {q8}')
+      printvalue = printvalue + f'Anticipated billing through {hospital[q6.index(True)]}'
+    printvalue = printvalue + f'Claim is ECR eligable?: {q8}'
     if q8 == True:
-      st.write(f'''
+      printvalue = printvalue + f'''
       BI Limits: {q9}\n
       Number pf BI exposures: {q10}\n
       Police report for the loss in file?: {q11}\n
-      ''')
+      '''
       if q11 == True:
-        st.write(f'\tInjuries mentioned?: {q11_1}\n')
-      st.write(f'''
+        printvalue = printvalue + f'\tInjuries mentioned?: {q11_1}\n'
+      printvalue = printvalue + f'''
       Claimant photos on file?: {q12}\n
       Insured photos on file?: {q13}\n
       Liabilty percentage?: {q14}\n
@@ -98,9 +93,9 @@ if submit == True:
       Claimant BI RI on file?: {q16}\n
       Has attorney provided injury information?: {q17}\n
       Insured RI to determine impact serverity, injuries of insd/clmt?: {q18}\n
-      ''')
+      '''
   elif state == 'Oregon':
-    st.write(f'''
+    printvalue = printvalue + f'''
     Claim Number: {claim_number}\n
     State: {state}\n
     No Coverage Concerns?: {q1}\n
@@ -111,16 +106,16 @@ if submit == True:
     Consider if NPNP would apply: {q6}\n
     PIP unlikely to exhaust?: {q7}\n
     Is this claim offer ECR eligable?: {q8}\n
-    ''')
+    '''
     if q8 == True:
-      st.write(f'''
+      printvalue = printvalue + f'''
       BI Limits: {q9}\n
       Number pf BI exposures: {q10}\n
       Police report for the loss in file?: {q11}\n
-      ''')
+      '''
       if q11 == True:
-        st.write(f'\tInjuries mentioned?: {q11_1}\n')
-      st.write(f'''
+        printvalue = printvalue + f'\tInjuries mentioned?: {q11_1}\n'
+      printvalue = printvalue + f'''
       Claimant photos on file?: {q12}\n
       Insured photos on file?: {q13}\n
       Liabilty percentage?: {q14}\n
@@ -128,7 +123,12 @@ if submit == True:
       Claimant BI RI on file?: {q16}\n
       Has attorney provided injury information?: {q17}\n
       Insured RI to determine impact serverity, injuries of insd/clmt?: {q18}\n
-      ''')
+      '''
+  st.write(printvalue)
+  data['Claim Number'].append(claim_number)
+  data['State'].append(state)
+  data['ECR Eligable'].append(q8)
+  data['Question Responses'].append(printvalue)
 
-      
- 
+if st.button('test'):
+  st.write(data)
