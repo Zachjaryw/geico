@@ -5,7 +5,7 @@ import numpy as np
 
 st.title('GEICO Claims Comprehensive Attorney Information Check-List')
 
-dbx = initializeToken('sl.BLuZNfee8_9kiR6glm6zNZ6st-mhW9Gtei7t7b2toN8joLWg9mg_dsYg1KSGMbmejO4WGnTMW0GlooM5vzNvV_dhJKAJBb9GIIhICNohnnDEYf4qV-by6TLezLgS038nInXOx19c')
+dbx = initializeToken(st.secrets.Token.token)
 
 def reset(dbx):
   toDBX(dbx,{'Claim Number':[],
