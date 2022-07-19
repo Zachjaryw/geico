@@ -208,7 +208,7 @@ elif additional_info == True:
   add_6 =st.text_input('Loss of Wages')
   add_7 =st.text_input('Missed life events/daily activities')
   add_8 =st.text_input('County/Venue of Accident')
-  formSubmit = st.button()
+  formSubmit = st.button('Submit',key = 'End Form')
     
   if formSubmit:
     additionalInformation = f'''
