@@ -18,6 +18,7 @@ with st.form('Claim Information',clear_on_submit = True):
     Providence = st.checkbox('Providence',False)
     Virginia_mason = st.checkbox('Virginia Mason',False)
     Valley_medical_center = st.checkbox('Valley Medical Center',False)
+    st.write('---------------------')
     hospital = ['Harborview','Swedish','Providence','Virginia Mason','Valley Medical Center']
     q6 = [harborview,Swedish,Providence,Virginia_mason,Valley_medical_center]
   elif state == 'Oregon':
