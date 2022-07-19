@@ -146,13 +146,14 @@ if submit == True:
     Missed life events/daily activities: {add_7}\n
     County/Venue of Accident: {add_8}\n
     '''
-  st.write(printvalue,additionalInformaton)
+  st.write(printvalue)
   data['Claim Number'].append(claim_number)
   data['State'].append(state)
   data['ECR Eligable'].append(q8)
   data['Question Responses'].append(printvalue)
   if not(len(add_0) == 0):
     data['Additional Information'].append(additionalInformation)
+    st.write(additionalInformaton)
   else:
     data['Additional Information'].append('None')
   toDBX(dbx,data,st.secrets.filepath.rentonCAIC)
