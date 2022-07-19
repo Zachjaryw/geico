@@ -46,7 +46,7 @@ if q8 == True:
   q15 = st.text_input('Accident type:',key = 6)
   q16 = st.checkbox('Claimant BI RI on file?',False)
   q17 = st.checkbox('Has attorney provided injury information?',False)
-  q18 = st.text_input('Insured RI to determine impact serverity, injuries of insd/clmt?',False)
+  q18 = st.checkbox('Insured RI to determine impact serverity, injuries of insd/clmt?',False)
   
 submit = st.button('Submit')
 
