@@ -11,8 +11,9 @@ def reset(dbx):
              'ECR Eligable':[],
              'Question Responses':[]},dbx,st.secrets.filepath.rentonCAIC)
 
-reset(dbx)
+
 dbx = initializeToken(st.secrets.Token.token)
+reset(dbx)
 data = fromDBX(dbx,st.secrets.filepath.rentonCAIC)
 
 claim_number = st.text_input('Enter 16 digit claim number',key = 0)
