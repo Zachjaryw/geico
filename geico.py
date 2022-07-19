@@ -4,7 +4,7 @@ st.title('GEICO Claims Comprehensive Attourney Information Check-List')
 
 claim_number = st.text_input('Enter 16 digit claim number',key = 0)
 
-state = st.selectbox(['Washington','Oregon'],key = 1)
+state = st.selectbox('Select state of accident',['Washington','Oregon'],key = 1)
 
 with st.form():
   q1 = st.checkbox('No Coverage Concerns?',False)
