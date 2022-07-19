@@ -17,7 +17,7 @@ dbx = initializeToken(st.secrets.Token.token)
 data = fromDBX(dbx,st.secrets.filepath.rentonCAIC)
 
 claim_number = st.text_input('Enter 16 digit claim number',key = 0)
-if claim_number != 'Override Zach Werner':
+if claim_number != 'Override Zach Werner' and claim_number != 'Override Reset':
   state = st.selectbox('Select state of accident',['Washington','Oregon'],key = 1)
   with st.container():
     q1 = st.checkbox('No Coverage Concerns?',False)
@@ -162,3 +162,7 @@ if claim_number != 'Override Zach Werner':
 elif claim_number == 'Override Zach Werner':
   df = pd.DataFrame(data)
   st.dataframe(df)
+elif claim_number == 'Override Reset':
+  toreset = st.text_input('To Reset Type "Reset CAIC Data"')
+  if toreset == 'Reset CAIC Data':
+    reset(dbx)
