@@ -43,7 +43,7 @@ if q8 == True:
   q12 = st.checkbox('Claimant photos on file?',False)
   q13 = st.checkbox('Insured photos on file?', False)
   q14 = st.text_input('Liabilty percentage?',key = 5)
-  q15 = st.text_input('Accident type:',ley = 6)
+  q15 = st.text_input('Accident type:',key = 6)
   q16 = st.checkbox('Claimant BI RI on file?',False)
   q17 = st.checkbox('Has attorney provided injury information?',False)
   q18 = st.text_input('Insured RI to determine impact serverity, injuries of insd/clmt?',False)
