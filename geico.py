@@ -9,10 +9,12 @@ def reset(dbx):
   toDBX(dbx,{'Claim Number':[],
              'State':[],
              'ECR Eligable':[],
-             'Question Responses':[]},st.secrets.filepath.rentonCAIC)
+             'Question Responses':[],
+             'Additional Information':[]},st.secrets.filepath.rentonCAIC)
 
 
 dbx = initializeToken(st.secrets.Token.token)
+reset(dbx)
 data = fromDBX(dbx,st.secrets.filepath.rentonCAIC)
 
 claim_number = st.text_input('Enter 16 digit claim number',key = 0)
@@ -61,7 +63,10 @@ with st.container():
     q17 = st.checkbox('Has attorney provided injury information?',False)
     q18 = st.checkbox('Insured RI to determine impact serverity, injuries of insd/clmt?',False)
 
-  submit = st.button('Submit')
+  col1, col2 = st.columns(2)
+  
+  additional_info = col1.button('Submit And Add Additoinal Information')
+  submit = col2.button('Submit Without Additoinal Information')
 
 if submit == True:
   printvalue = ''
@@ -130,4 +135,98 @@ if submit == True:
   data['State'].append(state)
   data['ECR Eligable'].append(q8)
   data['Question Responses'].append(printvalue)
+  data['Additional Information'].append('None')
   toDBX(dbx,data,st.secrets.filepath.rentonCAIC)
+elif additional_info == True:
+  printvalue = ''
+  if state == 'Washington':
+    printvalue = printvalue + f'''
+    Claim Number: {claim_number}\n
+    State: {state}\n
+    No Coverage Concerns?: {q1}\n
+    Any amount of liability accepted?: {q2}\n
+    No indication of big damages?: {q3}\n
+    2 or less IP's?: {q4}\n
+    No Reports of DUI or other agg liability?: {q5}\n
+    '''
+    if True in q6:
+      printvalue = printvalue + f'Anticipated billing through {hospital[q6.index(True)]}'
+    printvalue = printvalue + f'Claim is ECR eligable?: {q8}'
+    if q8 == True:
+      printvalue = printvalue + f'''
+      BI Limits: {q9}\n
+      Number pf BI exposures: {q10}\n
+      Police report for the loss in file?: {q11}\n
+      '''
+      if q11 == True:
+        printvalue = printvalue + f'\tInjuries mentioned?: {q11_1}\n'
+      printvalue = printvalue + f'''
+      Claimant photos on file?: {q12}\n
+      Insured photos on file?: {q13}\n
+      Liabilty percentage?: {q14}\n
+      Accident type: {q15}\n
+      Claimant BI RI on file?: {q16}\n
+      Has attorney provided injury information?: {q17}\n
+      Insured RI to determine impact serverity, injuries of insd/clmt?: {q18}\n
+      '''
+  elif state == 'Oregon':
+    printvalue = printvalue + f'''
+    Claim Number: {claim_number}\n
+    State: {state}\n
+    No Coverage Concerns?: {q1}\n
+    Accepted 50% liability or over?: {q2}\n
+    No indiation of big damages?: {q3}\n
+    2 or less IP's?: {q4}\n
+    No reports of DUI or other agg liability?: {q5}\n
+    Consider if NPNP would apply: {q6}\n
+    PIP unlikely to exhaust?: {q7}\n
+    Is this claim offer ECR eligable?: {q8}\n
+    '''
+    if q8 == True:
+      printvalue = printvalue + f'''
+      BI Limits: {q9}\n
+      Number pf BI exposures: {q10}\n
+      Police report for the loss in file?: {q11}\n
+      '''
+      if q11 == True:
+        printvalue = printvalue + f'\tInjuries mentioned?: {q11_1}\n'
+      printvalue = printvalue + f'''
+      Claimant photos on file?: {q12}\n
+      Insured photos on file?: {q13}\n
+      Liabilty percentage?: {q14}\n
+      Accident type: {q15}\n
+      Claimant BI RI on file?: {q16}\n
+      Has attorney provided injury information?: {q17}\n
+      Insured RI to determine impact serverity, injuries of insd/clmt?: {q18}\n
+      '''
+  with st.form('Additional Info'):
+    add_0 = st.text_input('Name of spouse or domestic partner')
+    add_1 =st.text_input('Treatment Status Update')
+    add_2 =st.text_input('Medicare, Medicaid, ERISA, Tricare eligable?')
+    add_3 =st.text_input('Estimated Treatment Timeframe')
+    add_4 =st.text_input('Dx of Injuries (diagnosis)')
+    add_5 =st.text_input('Diagnosic testing done')
+    add_6 =st.text_input('Loss of Wages')
+    add_7 =st.text_input('Missed life events/daily activities')
+    add_8 =st.text_input('County/Venue of Accident')
+    formSubmit = st.form_submit_button()
+    
+  if formSubmit:
+    additionalInformation = f'''
+    Name of spouse or domestic partner: {add_0}\n
+    Treatment Status Update: {add_1}\n
+    Medicare, Medicaid, ERISA, Tricare eligable?: {add_2}\n
+    Estiamted Treatment Timeframe: {add_3}\n
+    Dx of Injuries (diagnosis): {add_4}\n
+    Diagnosic testing done: {add_5}\n
+    Loss of Wages: {add_6}\n
+    Missed life events/daily activities: {add_7}\n
+    County/Venue of Accident: {add_8}\n
+    '''
+    st.write(printvalue,'\n',additionalInformation)
+    data['Claim Number'].append(claim_number)
+    data['State'].append(state)
+    data['ECR Eligable'].append(q8)
+    data['Question Responses'].append(printvalue)
+    data['Additional Information'].append(additionalInformation)
+    toDBX(dbx,data,st.secrets.filepath.rentonCAIC)
