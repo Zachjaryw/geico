@@ -1,7 +1,25 @@
 import streamlit as st
+from Dropbox_Setup import * #access dropbox
+import pandas as pd
+import numpy as np
 
 st.title('GEICO Claims Comprehensive Attorney Information Check-List')
 
+dbx = initializeToken('sl.BLuZNfee8_9kiR6glm6zNZ6st-mhW9Gtei7t7b2toN8joLWg9mg_dsYg1KSGMbmejO4WGnTMW0GlooM5vzNvV_dhJKAJBb9GIIhICNohnnDEYf4qV-by6TLezLgS038nInXOx19c')
+
+def reset(dbx):
+  toDBX(dbx,{'Claim Number':[],
+             'State':[],
+             'ECR Eligable':[],
+             'Question Responses':[]},'/R10/Renton/CAIC.json'})
+
+  
+reset()
+
+data = fromDBX(dbx,'/R10/Renton/CAIC.json')
+  
+st.write(data)
+  
 claim_number = st.text_input('Enter 16 digit claim number',key = 0)
 state = st.selectbox('Select state of accident',['Washington','Oregon'],key = 1)
 with st.container():
@@ -111,4 +129,6 @@ if submit == True:
       Has attorney provided injury information?: {q17}\n
       Insured RI to determine impact serverity, injuries of insd/clmt?: {q18}\n
       ''')
+
+      
  
