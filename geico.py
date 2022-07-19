@@ -4,7 +4,7 @@ st.title('GEICO Claims Comprehensive Attorney Information Check-List')
 
 claim_number = st.text_input('Enter 16 digit claim number',key = 0)
 state = st.selectbox('Select state of accident',['Washington','Oregon'],key = 1)
-with st.form('ECR Form'):
+with st.container():
   q1 = st.checkbox('No Coverage Concerns?',False)
   if state == 'Washington':
     q2 = st.checkbox('Any amount of liability accepted?',False)
@@ -48,7 +48,7 @@ with st.form('ECR Form'):
     q17 = st.checkbox('Has attorney provided injury information?',False)
     q18 = st.checkbox('Insured RI to determine impact serverity, injuries of insd/clmt?',False)
 
-  submit = st.form_submit_button('Submit')
+  submit = st.button('Submit')
 
 if submit == True:
   if state == 'Washington':
