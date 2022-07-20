@@ -175,7 +175,7 @@ if claim_number != st.secrets.override.dataoverride and claim_number != st.secre
     data['State'].append(state)
     data['ECR Eligable'].append(q8)
     data['Question Responses'].append(printvalue)
-    st.write(data.columns)
+    st.write(data.keys())
     if not(len(add_0) == 0) or not(len(add_1) == 0) or not(len(add_2) == 0) or not(len(add_3) == 0) or not(len(add_4) == 0) or not(len(add_5) == 0) or not(len(add_6) == 0) or not(len(add_7) == 0) or not(len(add_8) == 0):
       data['Additional Information'].append(additionalInformation)
       st.write(additionalInformation)
