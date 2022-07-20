@@ -177,7 +177,7 @@ if claim_number != st.secrets.override.dataoverride and claim_number != st.secre
     data['Question Responses'].append(printvalue)
     if not(len(add_0) == 0):
       data['Additional Information'].append(additionalInformation)
-      st.write(additionalInformaton)
+      st.write(additionalInformation)
     else:
       data['Additional Information'].append('None')
     toDBX(dbx,data,st.secrets.filepath.rentonCAIC)
