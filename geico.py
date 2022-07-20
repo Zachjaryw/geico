@@ -50,7 +50,7 @@ if claim_number != st.secrets.override.dataoverride and claim_number != st.secre
       q8 = False
 
     if q8 == True:
-      q9 = st.text_input('BI Limits:',key = 2)
+      q9 = st.selectbox('BI Limits:',['25/50','50/100','100/200','100/300','300/300','300/500'],key = 2)
       q10 = st.number_input('Number pf BI exposures:',key = 3,step = 1,min_value = 0)
       q11 = st.checkbox('Police report for the loss in file?',False)
       if q11 == True:
