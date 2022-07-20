@@ -170,7 +170,7 @@ if claim_number != st.secrets.override.dataoverride and claim_number != st.secre
       County/Venue of Accident: {add_8}\n
       '''
     st.write(printvalue)
-    data['Date'].append(dt.date.today)
+    data['Date'].append(str(dt.date.today))
     data['Claim Number'].append(claim_number)
     data['State'].append(state)
     data['ECR Eligable'].append(q8)
@@ -180,7 +180,6 @@ if claim_number != st.secrets.override.dataoverride and claim_number != st.secre
       st.write(additionalInformation)
     else:
       data['Additional Information'].append('None')
-    st.write(data)
     toDBX(dbx,data,st.secrets.filepath.rentonCAIC)
 
 elif claim_number == st.secrets.override.dataoverride:
