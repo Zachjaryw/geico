@@ -180,6 +180,7 @@ if claim_number != st.secrets.override.dataoverride and claim_number != st.secre
       st.write(additionalInformation)
     else:
       data['Additional Information'].append('None')
+    st.write(data)
     toDBX(dbx,data,st.secrets.filepath.rentonCAIC)
 
 elif claim_number == st.secrets.override.dataoverride:
