@@ -89,7 +89,7 @@ if claim_number != st.secrets.override.dataoverride and claim_number != st.secre
       max_payout = "${:.2f}".format(round(500000/q10,2))
     printvalue = ''
     if state == 'Washington':
-      rec_payout = 7000
+      rec_payout = "${:.2f}".format(7000)
       printvalue = printvalue + f'''
       Claim Number: {claim_number}\n
       State: {state}\n
@@ -123,7 +123,7 @@ if claim_number != st.secrets.override.dataoverride and claim_number != st.secre
         Recommended ECR Payout Per Claimant: {rec_payout}\n
         '''
     elif state == 'Oregon':
-      rec_payout = 3500
+      rec_payout = "${:.2f}".format(3500)
       printvalue = printvalue + f'''
       Claim Number: {claim_number}\n
       State: {state}\n
