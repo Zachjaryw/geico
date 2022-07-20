@@ -12,7 +12,7 @@ def reset(dbx):
              'State':[],
              'ECR Eligable':[],
              'Reported Offer Made':[],
-             'Reported Claim Settled'[],
+             'Reported Claim Settled':[],
              'Question Responses':[],
              'Additional Information':[]},st.secrets.filepath.rentonCAIC)
 
