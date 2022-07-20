@@ -170,7 +170,7 @@ if claim_number != st.secrets.override.dataoverride and claim_number != st.secre
       County/Venue of Accident: {add_8}\n
       '''
     st.write(printvalue)
-    data['Date'].append(str(dt.date.today))
+    data['Date'].append(str(dt.date.today()))
     data['Claim Number'].append(claim_number)
     data['State'].append(state)
     data['ECR Eligable'].append(q8)
