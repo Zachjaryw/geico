@@ -75,6 +75,18 @@ if claim_number != st.secrets.override.dataoverride and claim_number != st.secre
     submit = st.button('Submit')
 
   if submit == True:
+    if q9 = '25/50':
+      max_payout = '$' + str(round(50000/q10,2))
+    elif q9 = '50/100':
+      max_payout = '$' + str(round(100000/q10,2))
+    elif q9 = '100/200':
+      max_payout = '$' + str(round(200000/q10,2))
+    elif q9 = '100/300':
+      max_payout = '$' + str(round(300000/q10,2))
+    elif q9 = '300/300':
+      max_payout = '$' + str(round(300000/q10,2))
+    elif q9 = '300/500':
+      max_payout = '$' + str(round(500000/q10,2))
     printvalue = ''
     if state == 'Washington':
       printvalue = printvalue + f'''
@@ -105,6 +117,8 @@ if claim_number != st.secrets.override.dataoverride and claim_number != st.secre
         Claimant BI RI on file?: {q16}\n
         Has attorney provided injury information?: {q17}\n
         Insured RI to determine impact serverity, injuries of insd/clmt?: {q18}\n
+        \n\n
+        Maximum Payout Per Claimant: {max_payout}\n
         '''
     elif state == 'Oregon':
       printvalue = printvalue + f'''
@@ -135,6 +149,8 @@ if claim_number != st.secrets.override.dataoverride and claim_number != st.secre
         Claimant BI RI on file?: {q16}\n
         Has attorney provided injury information?: {q17}\n
         Insured RI to determine impact serverity, injuries of insd/clmt?: {q18}\n
+        \n\n
+        Maximum Payout Per Claimant: {max_payout}\n
         '''
         additionalInformation = f'''
       Name of spouse or domestic partner: {add_0}\n
