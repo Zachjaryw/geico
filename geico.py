@@ -80,17 +80,35 @@ if claim_number != st.secrets.override.dataoverride and claim_number != st.secre
 
   if submit == True:
     if q9 == '25/50':
-      max_payout = "${:.2f}".format(round(50000/q10,2))
+      max_payout = round(50000/q10,2)
+      if max_payout > 25000:
+        max_payout = 25000
+      max_payout = "${:.2f}".format(max_payout)
     elif q9 == '50/100':
-      max_payout = "${:.2f}".format(round(100000/q10,2))
+      max_payout = round(100000/q10,2)
+      if max_payout > 50000:
+        max_payout = 50000
+      max_payout = "${:.2f}".format(max_payout)
     elif q9 == '100/200':
-      max_payout = "${:.2f}".format(round(200000/q10,2))
+      max_payout = round(200000/q10,2)
+      if max_payout > 100000:
+        max_payout = 100000
+      max_payout = "${:.2f}".format(max_payout)
     elif q9 == '100/300':
-      max_payout = "${:.2f}".format(round(300000/q10,2))
+      max_payout = round(300000/q10,2)
+      if max_payout > 100000:
+        max_payout = 100000
+      max_payout = "${:.2f}".format(max_payout)
     elif q9 == '300/300':
-      max_payout = "${:.2f}".format(round(300000/q10,2))
+      max_payout = round(300000/q10,2)
+      if max_payout > 300000:
+        max_payout = 300000
+      max_payout = "${:.2f}".format(max_payout)
     elif q9 == '300/500':
-      max_payout = "${:.2f}".format(round(500000/q10,2))
+      max_payout = round(500000/q10,2)
+      if max_payout > 300000:
+        max_payout = 300000
+      max_payout = "${:.2f}".format(max_payout)
     printvalue = ''
     if state == 'Washington':
       rec_payout = "${:.2f}".format(7000)
