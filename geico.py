@@ -76,17 +76,17 @@ if claim_number != st.secrets.override.dataoverride and claim_number != st.secre
 
   if submit == True:
     if q9 == '25/50':
-      max_payout = '$' + str(round(50000/q10,2))
+      max_payout = "${:.2f}".format(round(50000/q10,2))
     elif q9 == '50/100':
-      max_payout = '$' + str(round(100000/q10,2))
+      max_payout = "${:.2f}".format(round(100000/q10,2))
     elif q9 == '100/200':
-      max_payout = '$' + str(round(200000/q10,2))
+      max_payout = "${:.2f}".formatr(round(200000/q10,2))
     elif q9 == '100/300':
-      max_payout = '$' + str(round(300000/q10,2))
+      max_payout = "${:.2f}".format(round(300000/q10,2))
     elif q9 == '300/300':
-      max_payout = '$' + str(round(300000/q10,2))
+      max_payout = "${:.2f}".format(round(300000/q10,2))
     elif q9 == '300/500':
-      max_payout = '$' + str(round(500000/q10,2))
+      max_payout = "${:.2f}".format(round(500000/q10,2))
     printvalue = ''
     if state == 'Washington':
       printvalue = printvalue + f'''
