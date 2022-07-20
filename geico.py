@@ -2,11 +2,13 @@ import streamlit as st
 from Dropbox_Setup import * #access dropbox
 import pandas as pd
 import numpy as np
+import datetime as dt
 
 st.title('GEICO Claims Comprehensive Attorney Information Check-List')
 
 def reset(dbx):
-  toDBX(dbx,{'Claim Number':[],
+  toDBX(dbx,{'Date':[],
+             'Claim Number':[],
              'State':[],
              'ECR Eligable':[],
              'Question Responses':[],
@@ -168,6 +170,7 @@ if claim_number != st.secrets.override.dataoverride and claim_number != st.secre
       County/Venue of Accident: {add_8}\n
       '''
     st.write(printvalue)
+    data['Date'].append(dt.date.today)
     data['Claim Number'].append(claim_number)
     data['State'].append(state)
     data['ECR Eligable'].append(q8)
