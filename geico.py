@@ -158,7 +158,7 @@ if claim_number != st.secrets.override.dataoverride and claim_number != st.secre
         Maximum Payout Per Claimant: {max_payout}\n
         Recommended ECR Payout Per Claimant: {rec_payout}\n
         '''
-        additionalInformation = f'''
+      additionalInformation = f'''
       Name of spouse or domestic partner: {add_0}\n
       Treatment Status Update: {add_1}\n
       Medicare, Medicaid, ERISA, Tricare eligable?: {add_2}\n
@@ -175,7 +175,6 @@ if claim_number != st.secrets.override.dataoverride and claim_number != st.secre
     data['State'].append(state)
     data['ECR Eligable'].append(q8)
     data['Question Responses'].append(printvalue)
-    st.write(data.keys())
     if not(len(add_0) == 0) or not(len(add_1) == 0) or not(len(add_2) == 0) or not(len(add_3) == 0) or not(len(add_4) == 0) or not(len(add_5) == 0) or not(len(add_6) == 0) or not(len(add_7) == 0) or not(len(add_8) == 0):
       data['Additional Information'].append(additionalInformation)
       st.write(additionalInformation)
