@@ -205,3 +205,4 @@ elif claim_number in data['Claim Number']:
       data['Reported Offer Made'][data['Claim Number'].index(claim_number)] = offerValue
     if resolved:
       data['Reported Claim Settled'][data['Claim Number'].index(claim_number)] = resolvedValue
+    toDBX(dbx,data,st.secrets.filepath.rentonCAIC)
