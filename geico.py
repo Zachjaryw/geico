@@ -141,8 +141,8 @@ if claim_number != st.secrets.override.dataoverride and claim_number != st.secre
         Has attorney provided injury information?: {q17}\n
         Insured RI to determine impact serverity, injuries of insd/clmt?: {q18}\n
         \n\n
-        Maximum Payout Per Claimant: {max_payout}\n
-        Recommended ECR Payout Per Claimant: {rec_payout}\n
+        Maximum Tender Per Claimant: {max_payout}\n
+        Recommended ECR Tender Per Claimant: {rec_payout}\n
         '''
     elif state == 'Oregon':
       rec_payout = "${:.2f}".format(3500)
@@ -175,8 +175,8 @@ if claim_number != st.secrets.override.dataoverride and claim_number != st.secre
         Has attorney provided injury information?: {q17}\n
         Insured RI to determine impact serverity, injuries of insd/clmt?: {q18}\n
         \n\n
-        Maximum Payout Per Claimant: {max_payout}\n
-        Recommended ECR Payout Per Claimant: {rec_payout}\n
+        Maximum Tender Per Claimant: {max_payout}\n
+        Recommended ECR Tender Per Claimant: {rec_payout}\n
         '''
     additionalInformation = f'''
     Name of spouse or domestic partner: {add_0}\n
