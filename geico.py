@@ -89,6 +89,7 @@ if claim_number != st.secrets.override.dataoverride and claim_number != st.secre
       max_payout = "${:.2f}".format(round(500000/q10,2))
     printvalue = ''
     if state == 'Washington':
+      rec_payout = 7000
       printvalue = printvalue + f'''
       Claim Number: {claim_number}\n
       State: {state}\n
@@ -119,8 +120,10 @@ if claim_number != st.secrets.override.dataoverride and claim_number != st.secre
         Insured RI to determine impact serverity, injuries of insd/clmt?: {q18}\n
         \n\n
         Maximum Payout Per Claimant: {max_payout}\n
+        Recommended ECR Payout Per Claimant: {rec_payout}\n
         '''
     elif state == 'Oregon':
+      rec_payout = 3500
       printvalue = printvalue + f'''
       Claim Number: {claim_number}\n
       State: {state}\n
@@ -151,6 +154,7 @@ if claim_number != st.secrets.override.dataoverride and claim_number != st.secre
         Insured RI to determine impact serverity, injuries of insd/clmt?: {q18}\n
         \n\n
         Maximum Payout Per Claimant: {max_payout}\n
+        Recommended ECR Payout Per Claimant: {rec_payout}\n
         '''
         additionalInformation = f'''
       Name of spouse or domestic partner: {add_0}\n
