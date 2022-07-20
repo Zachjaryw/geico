@@ -11,6 +11,8 @@ def reset(dbx):
              'Claim Number':[],
              'State':[],
              'ECR Eligable':[],
+             'Reported Offer Made':[],
+             'Reported Claim Settled'[],
              'Question Responses':[],
              'Additional Information':[]},st.secrets.filepath.rentonCAIC)
 
@@ -19,7 +21,7 @@ dbx = initializeToken(st.secrets.Token.token)
 data = fromDBX(dbx,st.secrets.filepath.rentonCAIC)
 
 claim_number = st.text_input('Enter 16 digit claim number',key = 0)
-if claim_number != st.secrets.override.dataoverride and claim_number != st.secrets.override.resetoverride:
+if claim_number != st.secrets.override.dataoverride and claim_number != st.secrets.override.resetoverride and not(claim_number in data['Claim Number']):
   state = st.selectbox('Select state of accident',['Washington','Oregon'],key = 1)
   with st.container():
     q1 = st.checkbox('No Coverage Concerns?',False)
@@ -189,3 +191,15 @@ elif claim_number == st.secrets.override.resetoverride:
   toreset = st.text_input('To Reset Type "Reset CAIC Data"')
   if toreset == 'Reset CAIC Data':
     reset(dbx)
+elif claim_number in data['Claim Number']:
+  offermade = st.checkbox('Has an offer been made?')
+  if offermade:
+    offerValue = st.text_input('How much was offered?')
+  resolved = st.checkbox('Has the claim been resolved?')
+  if resolved:
+    resolvedValue = st.text_input('How much was the case resolved for?')
+  if st.button('Submit',key = 'Existing submit'):
+    if offermade:
+      data['Reported Offer Made'][data['Claim Number'].index(claim_number)] = offerValue
+    if resolved:
+      data['Reported Claim Settled'][data['Claim Number'].index(claim_number)] = resolvedValue
