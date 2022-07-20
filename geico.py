@@ -158,17 +158,17 @@ if claim_number != st.secrets.override.dataoverride and claim_number != st.secre
         Maximum Payout Per Claimant: {max_payout}\n
         Recommended ECR Payout Per Claimant: {rec_payout}\n
         '''
-      additionalInformation = f'''
-      Name of spouse or domestic partner: {add_0}\n
-      Treatment Status Update: {add_1}\n
-      Medicare, Medicaid, ERISA, Tricare eligable?: {add_2}\n
-      Estiamted Treatment Timeframe: {add_3}\n
-      Dx of Injuries (diagnosis): {add_4}\n
-      Diagnosic testing done: {add_5}\n
-      Loss of Wages: {add_6}\n
-      Missed life events/daily activities: {add_7}\n
-      County/Venue of Accident: {add_8}\n
-      '''
+    additionalInformation = f'''
+    Name of spouse or domestic partner: {add_0}\n
+    Treatment Status Update: {add_1}\n
+    Medicare, Medicaid, ERISA, Tricare eligable?: {add_2}\n
+    Estiamted Treatment Timeframe: {add_3}\n
+    Dx of Injuries (diagnosis): {add_4}\n
+    Diagnosic testing done: {add_5}\n
+    Loss of Wages: {add_6}\n
+    Missed life events/daily activities: {add_7}\n
+    County/Venue of Accident: {add_8}\n
+    '''
     st.write(printvalue)
     data['Date'].append(str(dt.date.today()))
     data['Claim Number'].append(claim_number)
