@@ -21,4 +21,4 @@ for i in range(len(a['Question'])):
   
 if st.button('Submit'):
   for i in range(len(a['Question'])):
-    exec(f"st.write('{a['Question'][i]}': '{responses[i]}')")
+    exec(f"st.write('{a['Question'][i]}: {responses[i]}')")
