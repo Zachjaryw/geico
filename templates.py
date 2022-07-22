@@ -10,7 +10,7 @@ templates = format()
 
 st.write(templates)
 
-template = st.selectbox(list(templates.keys()))
+template = st.selectbox('Select which template you would like to use:',list(templates.keys()))
 
 responses = []
 for i in range(len(templates[template]['Question'])):
