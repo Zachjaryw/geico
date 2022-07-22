@@ -40,7 +40,7 @@ if claim_number != st.secrets.override.dataoverride and claim_number != st.secre
       q6 = [harborview,Swedish,Providence,Virginia_mason,Valley_medical_center]
     elif state == 'Oregon':
       q2 = st.checkbox('Accepted 50% liability or over?',False)
-      q3 = st.checkbox('No indiation of big damages?',False)
+      q3 = st.checkbox('No indication of big damages?',False)
       q4 = st.checkbox("2 or less IP's?",False)
       q5 = st.checkbox('No reports of DUI or other agg liability?',False)
       q6 = st.checkbox('Consider if NPNP would apply',False)
@@ -151,7 +151,7 @@ if claim_number != st.secrets.override.dataoverride and claim_number != st.secre
       State: {state}\n
       No Coverage Concerns?: {q1}\n
       Accepted 50% liability or over?: {q2}\n
-      No indiation of big damages?: {q3}\n
+      No indication of big damages?: {q3}\n
       2 or less IP's?: {q4}\n
       No reports of DUI or other agg liability?: {q5}\n
       Consider if NPNP would apply: {q6}\n
