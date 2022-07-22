@@ -8,7 +8,7 @@ template = st.selectbox('Select which template you would like to use:',list(temp
 responses = []
 for i in range(len(templates[template]['Question'])):
   exec(f""" 
-if {templates[template]['Condition'][i]}:
+if {templates[template]['Condition'][i]} == True:
     q{i} = st.{templates[template]['Type'][i]}('{templates[template]['Question'][i]}',key = {i}{templates[template]['Addons'][i]})
     if q{i} == True:
      q{i} = 'Y'
@@ -17,7 +17,8 @@ if {templates[template]['Condition'][i]}:
     exec(f'responses.append(q{i})')
     """)
 else:
-    exec(f'responses.append(np.nan)')    
+    exec(f'responses.append(np.nan)')
+    
 if st.button('Submit'):
   for i in range(len(templates[template]['Question'])):
     exec(f"""
