@@ -1,9 +1,5 @@
 def format(): 
-  template = {'Test': {'Question':['How are you?','Are you a human?','How many?'],
-                    'Type':['text_input','checkbox','number_input'],
-                    'Addons':['',',value = False',',min_value = 1, max_value = 10,step = 1'],
-                    'Condition':[True,True,'responses[1]']},
-            'New File Template':{'Addons': ['',
+  template = {'New File Template':{'Addons': ['',
   ',value = False',
   '',
   '',
