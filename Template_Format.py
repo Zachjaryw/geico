@@ -483,7 +483,7 @@ def format():
   'Loss State:',
   'CC Codes:\xa0',
   'Injuries:',
-  "If inj, which IP's are inj:",
+  "If inj, which IPs are inj:",
   'If inj, where is tx taking place:',
   'If inj, are inj parties RR of named insured:',
   'Any indication of UM:',
