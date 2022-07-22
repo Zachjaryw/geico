@@ -10,6 +10,10 @@ for i in range(len(templates[template]['Question'])):
   exec(f""" 
 if {templates[template]['Condition'][i]}:
     q{i} = st.{templates[template]['Type'][i]}('{templates[template]['Question'][i]}',key = {i}{templates[template]['Addons'][i]})
+    if q{i} == True:
+     q{i} = 'Y'
+    elif q{i} == False:
+      q{i} = 'N'
     exec(f'responses.append(q{i})')
     """)
 else:
