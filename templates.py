@@ -16,7 +16,7 @@ a = {'Question':['How are you?','Are you a human?','How many?'],
 
 responses = []
 for i in range(len(a['Question'])):
-  exec(f"q{i} = st.{a['Type'][i]}(str({a['Question'][i]}),key = {i}{a['Addons'][i]})")
+  exec(f"q{i} = st.{a['Type'][i]}({a['Question'][i]},key = {i}{a['Addons'][i]})")
   exec(f'responses.append(q{i})')
   
 if st.button('Submit'):
