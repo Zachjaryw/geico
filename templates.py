@@ -13,7 +13,7 @@ templates = format()
 a = {'Question':['How are you?','Are you a human?','How many?'],
     'Type':['text_input','checkbox','number_input'],
     'Addons':['',',value = False',',min_value = 1, max_value = 10,step = 1'],
-    'Condition':[True,True,q2]}
+    'Condition':[True,True,'q2']}
 
 responses = []
 for i in range(len(a['Question'])):
