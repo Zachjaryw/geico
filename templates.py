@@ -12,7 +12,7 @@ template = st.selectbox('Select which template you would like to use:',list(temp
 responses = []
 for i in range(len(templates[template]['Question'])):
   exec(f""" 
-if {a['Condition'][i]}:
+if {templates[template]['Condition'][i]}:
     q{i} = st.{templates[template]['Type'][i]}('{templates[template]['Question'][i]}',key = {i}{templates[template]['Addons'][i]})
     exec(f'responses.append(q{i})')
     """)
