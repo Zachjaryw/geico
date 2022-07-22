@@ -20,8 +20,10 @@ for i in range(len(a['Question'])):
   exec(f""" 
 if {a['Condition'][i]}:
     q{i} = st.{a['Type'][i]}('{a['Question'][i]}',key = {i}{a['Addons'][i]})""")
-  exec(f'responses.append(q{i})')
-  
+    exec(f'responses.append(q{i})')
+else:
+    exec(f'responses.append(np.nan)')
+    
 if st.button('Submit'):
   for i in range(len(a['Question'])):
     exec(f"st.write('{a['Question'][i]}: {responses[i]}')")
