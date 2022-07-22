@@ -18,7 +18,7 @@ def format():
   '',
   '',
   ',value = False'],
- 'Conditions': [True, True, True, True, True, True, True],
+ 'Condition': [True, True, True, True, True, True, True],
  'Question': ['Offered: (yes/no)',
   'Accepted: (yes/no)',
   'Access code provided: (yes/no)',
