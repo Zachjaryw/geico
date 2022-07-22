@@ -7,6 +7,8 @@ st.title('GEICO TCR II Templates')
 
 templates = format()
 
+st.write(templates)
+
 template = st.selectbox(list(templates.keys()))
 
 responses = []
