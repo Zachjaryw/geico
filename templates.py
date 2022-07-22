@@ -27,4 +27,7 @@ else:
     
 if st.button('Submit'):
   for i in range(len(a['Question'])):
-    exec(f"st.write('{a['Question'][i]}: {responses[i]}')")
+    exec(f"""
+if not({responses[i]} == {np.nan}:
+    st.write('{a['Question'][i]}: {responses[i]}')
+    """)
