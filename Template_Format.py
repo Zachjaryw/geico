@@ -78,7 +78,7 @@ def format():
  'Question': ['CL92 Due Date (add 10 days):',
   'Coverage issues:',
   'Risk/Loss:',
-  "Rec'd date:",
+  "Recd date:",
   'Need RI from: ',
   'Need to open exposures and reserve lines    ',
   'Need to rule out PDX (use PDX Add on if applies)    ',
