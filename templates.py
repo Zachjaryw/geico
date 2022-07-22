@@ -17,7 +17,7 @@ a = {'Question':['How are you?','Are you a human?','How many?'],
 
 responses = []
 for i in range(len(a['Question'])):
-  exec(f:""" 
+  exec(f""" 
 if {a['Condition'][i]}:
     q{i} = st.{a['Type'][i]}('{a['Question'][i]}',key = {i}{a['Addons'][i]})""")
   exec(f'responses.append(q{i})')
