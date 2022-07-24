@@ -19,7 +19,7 @@ def get_new_auth_token(key,secret):
         auth_flow = dropbox.DropboxOAuth2FlowNoRedirect(key,secret)
         authorize_url = auth_flow.start()
         print("Go to: " + authorize_url)
-        auth_code = input("Enter the authorization code here: ").strip()
+        auth_code = st.text_input("Enter the authorization code here: ").strip()
         try:
             oauth_result = auth_flow.finish(auth_code)
         except Exception as e:
