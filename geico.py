@@ -16,8 +16,12 @@ def reset(dbx):
              'Question Responses':[],
              'Additional Information':[]},st.secrets.filepath.rentonCAIC)
 
-
-dbx = initializeToken(st.secrets.Token.token)
+try:
+  dbx = initializeToken(st.secrets.Token.token)
+except:
+  token = get_new_auth_token(st.secrets.Token.key,st.secrets.Token.secret)
+  dbx = initializeToken(token)
+  
 data = fromDBX(dbx,st.secrets.filepath.rentonCAIC)
 
 claim_number = st.text_input('Enter 16 digit claim number',key = 0)
