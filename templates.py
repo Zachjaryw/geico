@@ -10,7 +10,7 @@ for i in range(len(templates[template]['Question'])):
   if templates[template]['Condition'][i] == True:
     check = True
   else:
-    check = responses[templates[template]['Condition'][i]]
+    check = responses[int(templates[template]['Condition'][i])]
     
   st.write(check)
   if check:
