@@ -10,10 +10,8 @@ for i in range(len(templates[template]['Question'])):
   if templates[template]['Condition'][i] == True:
     check = True
   else:
-    st.write(responses)
     check = exec("templates[template]['Condition'][i]")
-  st.write(check)
-  if check:
+  if check == 'N':
     exec(f"""q{i} = st.{templates[template]['Type'][i]}('{templates[template]['Question'][i]}',key = {i}{templates[template]['Addons'][i]})""")
     exec(f"""
 if q{i} == True:
