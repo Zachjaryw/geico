@@ -204,7 +204,7 @@ def format():
   True,
   True,
   True,
-  'responses[23]',
+  '23',
   True,
   True,
   True,
