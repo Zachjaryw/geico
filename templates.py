@@ -11,7 +11,7 @@ for i in range(len(templates[template]['Question'])):
     check = True
   else:
     check = exec("templates[template]['Condition'][i]")
-  if check == 'Y':
+  if check:
     exec(f"""q{i} = st.{templates[template]['Type'][i]}('{templates[template]['Question'][i]}',key = {i}{templates[template]['Addons'][i]})""")
     exec(f"""
 if q{i} == True:
