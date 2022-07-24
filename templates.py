@@ -7,7 +7,10 @@ templates = format()
 template = st.selectbox('Select which template you would like to use:',list(templates.keys()))
 responses = []
 for i in range(len(templates[template]['Question'])):
-  check = exec("templates[template]['Condition'][i]")
+  if templates[template]['Condition'][i] == True:
+    check = True
+  else:
+    check = exec("templates[template]['Condition'][i]")
   st.write(check)
   if check:
     exec(f"""q{i} = st.{templates[template]['Type'][i]}('{templates[template]['Question'][i]}',key = {i}{templates[template]['Addons'][i]})""")
