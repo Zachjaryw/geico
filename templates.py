@@ -10,7 +10,14 @@ for i in range(len(templates[template]['Question'])):
   if templates[template]['Condition'][i] == True:
     check = True
   else:
-    check = responses[int(templates[template]['Condition'][i])]
+    if 'N' in templates[template]['Condition'][i]:
+      check = responses[int(templates[template]['Condition'][i][1:])]
+      if check == 'N':
+        check = 'Y'
+      else:
+        check == 'N'
+    else:
+      check = responses[int(templates[template]['Condition'][i])]
   if check == True or check == 'Y':
     exec(f"""q{i} = st.{templates[template]['Type'][i]}('{templates[template]['Question'][i]}',key = {i}{templates[template]['Addons'][i]})""")
     exec(f"""
