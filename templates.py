@@ -11,8 +11,6 @@ for i in range(len(templates[template]['Question'])):
     check = True
   else:
     check = responses[int(templates[template]['Condition'][i])]
-    
-  st.write(check)
   if check == True or check == 'Y':
     exec(f"""q{i} = st.{templates[template]['Type'][i]}('{templates[template]['Question'][i]}',key = {i}{templates[template]['Addons'][i]})""")
     exec(f"""
@@ -23,8 +21,7 @@ elif q{i} == False:
 exec(f'responses.append(q{i})')
     """)
 else:
-    exec(f'responses.append(np.nan)')
-    
+    exec(f'responses.append(np.nan)') 
 if st.button('Submit'):
   for i in range(len(templates[template]['Question'])):
     if not(responses[i] == np.nan):
