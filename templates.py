@@ -16,9 +16,6 @@ for i in range(len(templates[template]['Question'])):
       check = responses[int(templates[template]['Condition'][i][1:])]
     else:
       check = responses[int(templates[template]['Condition'][i])]
-  st.write(check)
-  st.write(responses)
-  st.write(reverse)
   if check == True or (check == 'Y' and reverse == False) or (reverse == True and check == 'N'):
     exec(f"""q{i} = st.{templates[template]['Type'][i]}('{templates[template]['Question'][i]}',key = {i}{templates[template]['Addons'][i]})""")
     exec(f"""
