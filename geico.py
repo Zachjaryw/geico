@@ -19,7 +19,7 @@ def reset(dbx):
 try:
   dbx = initializeToken(st.secrets.Token.token)
 except:
-  token = Dropbox_Setup.get_new_auth_token(st.secrets.Token.key,st.secrets.Token.secret)
+  token = get_new_auth_token(st.secrets.Token.key,st.secrets.Token.secret)
   dbx = initializeToken(token)
   
 data = fromDBX(dbx,st.secrets.filepath.rentonCAIC)
