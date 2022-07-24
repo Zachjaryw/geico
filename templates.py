@@ -10,14 +10,7 @@ for i in range(len(templates[template]['Question'])):
   if templates[template]['Condition'][i] == True:
     check = True
   else:
-    if 'N' in templates[template]['Condition'][i]:
-      check = responses[int(templates[template]['Condition'][i][1:])]
-      if check == 'N':
-        check = 'Y'
-      else:
-        check == 'N'
-    else:
-      check = responses[int(templates[template]['Condition'][i])]
+    check = responses[int(templates[template]['Condition'][i])]
   st.write(check)
   st.write(responses)
   if check == True or check == 'Y':
