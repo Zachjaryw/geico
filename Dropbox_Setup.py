@@ -16,7 +16,7 @@ method to get new auth token
 '''
 def get_new_auth_token(key,secret):
         # Run the dropbox OAuth Flow to get the user's OAuth Token.
-        auth_flow = DropboxOAuth2FlowNoRedirect(key,secret)
+        auth_flow = dropbox.DropboxOAuth2FlowNoRedirect(key,secret)
         authorize_url = auth_flow.start()
         print("Go to: " + authorize_url)
         auth_code = input("Enter the authorization code here: ").strip()
