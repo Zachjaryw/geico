@@ -7,7 +7,7 @@ templates = format()
 template = st.selectbox('Select which template you would like to use:',list(templates.keys()))
 responses = []
 for i in range(len(templates[template]['Question'])):
-  reverse == False
+  reverse = False
   if templates[template]['Condition'][i] == True:
     check = True
   else:
