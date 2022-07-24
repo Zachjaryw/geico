@@ -23,4 +23,4 @@ else:
 if st.button('Submit'):
   for i in range(len(templates[template]['Question'])):
     if not(responses[i] == np.nan):
-    exec(f"""st.write('{templates[template]['Question'][i]}: {responses[i]}')""")
+      exec(f"""st.write('{templates[template]['Question'][i]}: {responses[i]}')""")
