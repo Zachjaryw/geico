@@ -19,7 +19,8 @@ def reset(dbx):
 try:
   dbx = initializeToken(st.secrets.Token.token)
 except:
-  token = get_new_auth_token(st.secrets.Token.key,st.secrets.Token.secret)
+  with st.container():
+    token = get_new_auth_token(st.secrets.Token.key,st.secrets.Token.secret)
   dbx = initializeToken(token)
   
 data = fromDBX(dbx,st.secrets.filepath.rentonCAIC)
