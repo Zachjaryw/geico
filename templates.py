@@ -10,6 +10,7 @@ for i in range(len(templates[template]['Question'])):
   if templates[template]['Condition'][i] == True:
     check = True
   else:
+    st.write(templates[template]['Condition'][i])
     check = exec("templates[template]['Condition'][i]")
   st.write(check)
   if check:
