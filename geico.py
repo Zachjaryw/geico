@@ -10,7 +10,7 @@ def reset(dbx):
   toDBX(dbx,{'Date':[],
              'Claim Number':[],
              'State':[],
-             'ECR Eligable':[],
+             'ECR Eligible':[],
              'Reported Offer Made':[],
              'Reported Claim Settled':[],
              'Question Responses':[]},st.secrets.filepath.rentonCAIC)
