@@ -4,7 +4,7 @@ import pandas as pd
 import numpy as np
 import datetime as dt
 
-st.title('GEICO Claims Comprehensive Attorney Information Check-List')
+st.title('GEICO Claims ECR Add On Template')
 
 def reset(dbx):
   toDBX(dbx,{'Date':[],
