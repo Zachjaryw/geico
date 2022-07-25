@@ -13,13 +13,14 @@ def reset(dbx):
              'ECR Eligable':[],
              'Reported Offer Made':[],
              'Reported Claim Settled':[],
-             'Question Responses':[],
-             'Additional Information':[]},st.secrets.filepath.rentonCAIC)
+             'Question Responses':[]},st.secrets.filepath.rentonCAIC)
 
-
+REMOVE = '''
 dbx = initializeToken(st.secrets.Token.token)
   
 data = fromDBX(dbx,st.secrets.filepath.rentonCAIC)
+'''
+
 
 claim_number = st.text_input('Enter 16 digit claim number',key = 0)
 if claim_number != st.secrets.override.dataoverride and claim_number != st.secrets.override.resetoverride and not(claim_number in data['Claim Number']):
@@ -67,16 +68,6 @@ if claim_number != st.secrets.override.dataoverride and claim_number != st.secre
       q16 = st.checkbox('Claimant BI RI on file?',False)
       q17 = st.checkbox('Has attorney provided injury information?',False)
       q18 = st.checkbox('Insured RI to determine impact serverity, injuries of insd/clmt?',False)
-    with st.expander('Additional Information',False):
-      add_0 = st.text_input('Name of spouse or domestic partner')
-      add_1 =st.text_input('Treatment Status Update')
-      add_2 =st.text_input('Medicare, Medicaid, ERISA, Tricare eligable?')
-      add_3 =st.text_input('Estimated Treatment Timeframe')
-      add_4 =st.text_input('Dx of Injuries (diagnosis)')
-      add_5 =st.text_input('Diagnosic testing done')
-      add_6 =st.text_input('Loss of Wages')
-      add_7 =st.text_input('Missed life events/daily activities')
-      add_8 =st.text_input('County/Venue of Accident')
     submit = st.button('Submit')
 
   if submit == True:
@@ -124,7 +115,22 @@ if claim_number != st.secrets.override.dataoverride and claim_number != st.secre
       '''
       if True in q6:
         printvalue = printvalue + f'Anticipated billing through {hospital[q6.index(True)]}'
-      printvalue = printvalue + f'Claim is ECR eligable?: {q8}'
+      ECREligable = ''
+      if q8 == True:
+        hes = False
+        if (False in [q12,q13]):
+          ECREligable += ' Additional Accident Images Req (F/U).'
+          hes = True
+        if (False in [q16,q17,q18]):
+          ECREligable += ' Additional Injury Information Req (F/U).'
+          hes = True
+        if hes == True:
+          ECREligable = f'Claim is ECR eligable?: Possible.' + ECREligable
+        elif hes == False:
+          ECREligable = f'Claim is ECR eligable?: True' + ECREligable
+      else:
+        ECREligable += f'Claim is ECR eligable?: {q8}'
+      printvalue = printvalue + ECREligable + '\n'
       if q8 == True:
         printvalue = printvalue + f'''
         BI Limits: {q9}\n
@@ -139,7 +145,7 @@ if claim_number != st.secrets.override.dataoverride and claim_number != st.secre
         Liabilty percentage?: {q14}\n
         Accident type: {q15}\n
         Claimant BI RI on file?: {q16}\n
-        Has attorney provided injury information?: {q17}\n
+        Has attorney provided injury information? (if not repped, set to true): {q17}\n
         Insured RI to determine impact serverity, injuries of insd/clmt?: {q18}\n
         \n\n
         Maximum Tender Per Claimant: {max_payout}\n
@@ -179,31 +185,20 @@ if claim_number != st.secrets.override.dataoverride and claim_number != st.secre
         Maximum Tender Per Claimant: {max_payout}\n
         Recommended ECR Tender Per Claimant: {rec_payout}\n
         '''
-    additionalInformation = f'''
-    Name of spouse or domestic partner: {add_0}\n
-    Treatment Status Update: {add_1}\n
-    Medicare, Medicaid, ERISA, Tricare eligable?: {add_2}\n
-    Estiamted Treatment Timeframe: {add_3}\n
-    Dx of Injuries (diagnosis): {add_4}\n
-    Diagnosic testing done: {add_5}\n
-    Loss of Wages: {add_6}\n
-    Missed life events/daily activities: {add_7}\n
-    County/Venue of Accident: {add_8}\n
-    '''
+  
+REMOVE = '''  
     st.write(printvalue)
     data['Date'].append(str(dt.date.today()))
     data['Claim Number'].append(claim_number)
     data['State'].append(state)
-    data['ECR Eligable'].append(q8)
+    data['ECR Eligable'].append(ECREligable)
     data['Question Responses'].append(printvalue)
     data['Reported Offer Made'].append("COLLECT FROM ATLAS")
     data['Reported Claim Settled'].append("COLLECT FROM ATLAS")
-    if not(len(add_0) == 0) or not(len(add_1) == 0) or not(len(add_2) == 0) or not(len(add_3) == 0) or not(len(add_4) == 0) or not(len(add_5) == 0) or not(len(add_6) == 0) or not(len(add_7) == 0) or not(len(add_8) == 0):
-      data['Additional Information'].append(additionalInformation)
-      st.write(additionalInformation)
-    else:
-      data['Additional Information'].append('None')
+    
+
     toDBX(dbx,data,st.secrets.filepath.rentonCAIC)
+    '''
 
 elif claim_number == st.secrets.override.dataoverride:
   df = pd.DataFrame(data)
