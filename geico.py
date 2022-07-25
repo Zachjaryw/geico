@@ -196,8 +196,8 @@ if claim_number != st.secrets.override.dataoverride and claim_number != st.secre
     data['State'].append(state)
     data['ECR Eligable'].append(q8)
     data['Question Responses'].append(printvalue)
-    data['Reported Offer Made'].append(None)
-    data['Reported Claim Settled'].append(None)
+    data['Reported Offer Made'].append("COLLECT FROM ATLAS")
+    data['Reported Claim Settled'].append("COLLECT FROM ATLAS")
     if not(len(add_0) == 0) or not(len(add_1) == 0) or not(len(add_2) == 0) or not(len(add_3) == 0) or not(len(add_4) == 0) or not(len(add_5) == 0) or not(len(add_6) == 0) or not(len(add_7) == 0) or not(len(add_8) == 0):
       data['Additional Information'].append(additionalInformation)
       st.write(additionalInformation)
@@ -213,15 +213,4 @@ elif claim_number == st.secrets.override.resetoverride:
   if toreset == 'Reset CAIC Data':
     reset(dbx)
 elif claim_number in data['Claim Number']:
-  offermade = st.checkbox('Has an offer been made?')
-  if offermade:
-    offerValue = st.text_input('How much was offered?')
-  resolved = st.checkbox('Has the claim been resolved?')
-  if resolved:
-    resolvedValue = st.text_input('How much was the case resolved for?')
-  if st.button('Submit',key = 'Existing submit'):
-    if offermade:
-      data['Reported Offer Made'][data['Claim Number'].index(claim_number)] = offerValue
-    if resolved:
-      data['Reported Claim Settled'][data['Claim Number'].index(claim_number)] = resolvedValue
-    toDBX(dbx,data,st.secrets.filepath.rentonCAIC)
+  st.warning('This claim has already been processed')
