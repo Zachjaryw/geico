@@ -25,8 +25,8 @@ elif q{i} == False:
   q{i} = 'N'
 exec(f'responses.append(q{i})')
     """)
-else:
-    exec(f'responses.append(np.nan)') 
+  else:
+    responses.append(np.nan)
 if st.button('Submit'):
   for i in range(len(templates[template]['Question'])):
     if not(responses[i] == np.nan):
