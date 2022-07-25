@@ -8,10 +8,10 @@ template = st.selectbox('Select which template you would like to use:',list(temp
 responses = []
 for i in range(len(templates[template]['Question'])):
   reverse = False
+  st.write(templates[template]['Condition'][i])
   if templates[template]['Condition'][i] == True:
     check = True
   else:
-    st.write(responses[int(templates[template]['Condition'][i])])
     if 'N' in str(templates[template]['Condition'][i]):
       reverse = True
       check = responses[int(templates[template]['Condition'][i][1:])]
