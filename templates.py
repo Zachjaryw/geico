@@ -11,7 +11,7 @@ for i in range(len(templates[template]['Question'])):
   if templates[template]['Condition'][i] == True:
     check = True
   else:
-    st.write(check)
+    st.write(responses[int(templates[template]['Condition'][i])])
     if 'N' in str(templates[template]['Condition'][i]):
       reverse = True
       check = responses[int(templates[template]['Condition'][i][1:])]
