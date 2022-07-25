@@ -6,11 +6,8 @@ st.title('GEICO TCR II Templates')
 templates = format()
 template = st.selectbox('Select which template you would like to use:',list(templates.keys()))
 responses = []
-st.write(len(templates[template]['Question']))
 for i in range(len(templates[template]['Question'])):
   reverse = False
-  st.write(i)
-  st.write(templates[template]['Condition'][i])
   if templates[template]['Condition'][i] == True:
     check = True
   else:
