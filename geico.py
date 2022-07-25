@@ -102,11 +102,28 @@ if claim_number != st.secrets.override.dataoverride and claim_number != st.secre
         max_payout = 300000
       max_payout = "${:.2f}".format(max_payout)
     printvalue = ''
+    printvalue = printvalue + f'''
+      Claim Number: {claim_number}\n
+      State: {state}\n'''
+    ECREligable = ''
+    if q8 == True:
+      hes = False
+      if (False in [q12,q13]):
+        ECREligable += ' Additional Accident Images Req (F/U).'
+        hes = True
+      if (False in [q16,q17,q18]):
+        ECREligable += ' Additional Injury Information Req (F/U).'
+        hes = True
+      if hes == True:
+        ECREligable = f'Claim is ECR eligable?: Possible.' + ECREligable
+      elif hes == False:
+        ECREligable = f'Claim is ECR eligable?: True' + ECREligable
+    else:
+      ECREligable += f'Claim is ECR eligable?: {q8}'
+    printvalue = printvalue + ECREligable + '\n'
     if state == 'Washington':
       rec_payout = "${:.2f}".format(7000)
       printvalue = printvalue + f'''
-      Claim Number: {claim_number}\n
-      State: {state}\n
       No Coverage Concerns?: {q1}\n
       Any amount of liability accepted?: {q2}\n
       No indication of big damages?: {q3}\n
@@ -115,22 +132,7 @@ if claim_number != st.secrets.override.dataoverride and claim_number != st.secre
       '''
       if True in q6:
         printvalue = printvalue + f'Anticipated billing through {hospital[q6.index(True)]}'
-      ECREligable = ''
-      if q8 == True:
-        hes = False
-        if (False in [q12,q13]):
-          ECREligable += ' Additional Accident Images Req (F/U).'
-          hes = True
-        if (False in [q16,q17,q18]):
-          ECREligable += ' Additional Injury Information Req (F/U).'
-          hes = True
-        if hes == True:
-          ECREligable = f'Claim is ECR eligable?: Possible.' + ECREligable
-        elif hes == False:
-          ECREligable = f'Claim is ECR eligable?: True' + ECREligable
-      else:
-        ECREligable += f'Claim is ECR eligable?: {q8}'
-      printvalue = printvalue + ECREligable + '\n'
+    
       if q8 == True:
         printvalue = printvalue + f'''
         BI Limits: {q9}\n
@@ -154,8 +156,6 @@ if claim_number != st.secrets.override.dataoverride and claim_number != st.secre
     elif state == 'Oregon':
       rec_payout = "${:.2f}".format(3500)
       printvalue = printvalue + f'''
-      Claim Number: {claim_number}\n
-      State: {state}\n
       No Coverage Concerns?: {q1}\n
       Accepted 50% liability or over?: {q2}\n
       No indication of big damages?: {q3}\n
