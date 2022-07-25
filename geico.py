@@ -115,11 +115,11 @@ State: {state}\n'''
         ECREligable += ' Additional Injury Information Req (F/U).'
         hes = True
       if hes == True:
-        ECREligable = f'Claim is ECR eligable?: Possible.' + ECREligable
+        ECREligable = f'Claim is ECR eligible?: Possible.' + ECREligable
       elif hes == False:
-        ECREligable = f'Claim is ECR eligable?: True' + ECREligable
+        ECREligable = f'Claim is ECR eligible?: True' + ECREligable
     else:
-      ECREligable += f'Claim is ECR eligable?: {q8}'
+      ECREligable += f'Claim is ECR eligible?: {q8}'
     printvalue =  printvalue + '\n' + ECREligable + '\n'
     if state == 'Washington':
       rec_payout = "${:.2f}".format(7000)
