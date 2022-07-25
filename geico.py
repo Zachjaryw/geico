@@ -103,8 +103,8 @@ if claim_number != st.secrets.override.dataoverride and claim_number != st.secre
       max_payout = "${:.2f}".format(max_payout)
     printvalue = ''
     printvalue = printvalue + f'''
-      Claim Number: {claim_number}\n
-      State: {state}\n'''
+Claim Number: {claim_number}\n
+State: {state}\n'''
     ECREligable = ''
     if q8 == True:
       hes = False
@@ -124,66 +124,66 @@ if claim_number != st.secrets.override.dataoverride and claim_number != st.secre
     if state == 'Washington':
       rec_payout = "${:.2f}".format(7000)
       printvalue = printvalue + f'''
-      No Coverage Concerns?: {q1}\n
-      Any amount of liability accepted?: {q2}\n
-      No indication of big damages?: {q3}\n
-      2 or less IP's?: {q4}\n
-      No Reports of DUI or other agg liability?: {q5}\n
+No Coverage Concerns?: {q1}\n
+Any amount of liability accepted?: {q2}\n
+No indication of big damages?: {q3}\n
+2 or less IP's?: {q4}\n
+No Reports of DUI or other agg liability?: {q5}\n
       '''
       if True in q6:
         printvalue = printvalue + f'Anticipated billing through {hospital[q6.index(True)]}'
     
       if q8 == True:
         printvalue = printvalue + f'''
-        BI Limits: {q9}\n
-        Number pf BI exposures: {q10}\n
-        Police report for the loss in file?: {q11}\n
+BI Limits: {q9}\n
+Number pf BI exposures: {q10}\n
+Police report for the loss in file?: {q11}\n
         '''
         if q11 == True:
           printvalue = printvalue + f'\tInjuries mentioned?: {q11_1}\n'
         printvalue = printvalue + f'''
-        Claimant photos on file?: {q12}\n
-        Insured photos on file?: {q13}\n
-        Liabilty percentage?: {q14}\n
-        Accident type: {q15}\n
-        Claimant BI RI on file?: {q16}\n
-        Has attorney provided injury information? (if not repped, set to true): {q17}\n
-        Insured RI to determine impact serverity, injuries of insd/clmt?: {q18}\n
-        \n\n
-        Maximum Tender Per Claimant: {max_payout}\n
-        Recommended ECR Tender Per Claimant: {rec_payout}\n
+Claimant photos on file?: {q12}\n
+Insured photos on file?: {q13}\n
+Liabilty percentage?: {q14}\n
+Accident type: {q15}\n
+Claimant BI RI on file?: {q16}\n
+Has attorney provided injury information? (if not repped, set to true): {q17}\n
+Insured RI to determine impact serverity, injuries of insd/clmt?: {q18}\n
+\n\n
+Maximum Tender Per Claimant: {max_payout}\n
+Recommended ECR Tender Per Claimant: {rec_payout}\n
         '''
     elif state == 'Oregon':
       rec_payout = "${:.2f}".format(3500)
       printvalue = printvalue + f'''
-      No Coverage Concerns?: {q1}\n
-      Accepted 50% liability or over?: {q2}\n
-      No indication of big damages?: {q3}\n
-      2 or less IP's?: {q4}\n
-      No reports of DUI or other agg liability?: {q5}\n
-      Consider if NPNP would apply: {q6}\n
-      PIP unlikely to exhaust?: {q7}\n
-      Is this claim offer ECR eligable?: {q8}\n
+No Coverage Concerns?: {q1}\n
+Accepted 50% liability or over?: {q2}\n
+No indication of big damages?: {q3}\n
+2 or less IP's?: {q4}\n
+No reports of DUI or other agg liability?: {q5}\n
+Consider if NPNP would apply: {q6}\n
+PIP unlikely to exhaust?: {q7}\n
+Is this claim offer ECR eligable?: {q8}\n
       '''
       if q8 == True:
         printvalue = printvalue + f'''
-        BI Limits: {q9}\n
-        Number pf BI exposures: {q10}\n
-        Police report for the loss in file?: {q11}\n
+BI Limits: {q9}\n
+Number pf BI exposures: {q10}\n
+Police report for the loss in file?: {q11}\n
         '''
         if q11 == True:
           printvalue = printvalue + f'\tInjuries mentioned?: {q11_1}\n'
         printvalue = printvalue + f'''
-        Claimant photos on file?: {q12}\n
-        Insured photos on file?: {q13}\n
-        Liabilty percentage?: {q14}\n
-        Accident type: {q15}\n
-        Claimant BI RI on file?: {q16}\n
-        Has attorney provided injury information?: {q17}\n
-        Insured RI to determine impact serverity, injuries of insd/clmt?: {q18}\n
-        \n\n
-        Maximum Tender Per Claimant: {max_payout}\n
-        Recommended ECR Tender Per Claimant: {rec_payout}\n
+Claimant photos on file?: {q12}\n
+Insured photos on file?: {q13}\n
+Liabilty percentage?: {q14}\n
+Accident type: {q15}\n
+Claimant BI RI on file?: {q16}\n
+Has attorney provided injury information?: {q17}\n
+Insured RI to determine impact serverity, injuries of insd/clmt?: {q18}\n
+\n\n
+Maximum Tender Per Claimant: {max_payout}\n
+Recommended ECR Tender Per Claimant: {rec_payout}\n
         '''
   
     st.write(printvalue)
