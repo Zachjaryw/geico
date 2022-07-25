@@ -186,8 +186,9 @@ if claim_number != st.secrets.override.dataoverride and claim_number != st.secre
         Recommended ECR Tender Per Claimant: {rec_payout}\n
         '''
   
-  REMOVE = '''  
     st.write(printvalue)
+  REMOVE = '''  
+    
     data['Date'].append(str(dt.date.today()))
     data['Claim Number'].append(claim_number)
     data['State'].append(state)
