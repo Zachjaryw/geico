@@ -983,7 +983,7 @@ def format():
   ',value = False',
   ',value = False',
   ',value = False'],
- 'Condition': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 10, 10, 1, 13, 13, 1, 1],
+ 'Condition': [True, True, True, True, True, True, True, True, True, True, True, 10, 10, True, 13, 13, True, True],
  'Question': ['Need to Add supervisor workplan (PDX  & Your Name)',
   'Need to Update Bad Paycodes for all claimant vehicles',
   '*ad special instructions notify of pdx case ',
