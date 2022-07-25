@@ -120,7 +120,7 @@ State: {state}\n'''
         ECREligable = f'Claim is ECR eligable?: True' + ECREligable
     else:
       ECREligable += f'Claim is ECR eligable?: {q8}'
-    printvalue = '\n' + printvalue + ECREligable + '\n'
+    printvalue =  printvalue + '\n' + ECREligable + '\n'
     if state == 'Washington':
       rec_payout = "${:.2f}".format(7000)
       printvalue = printvalue + f'''
