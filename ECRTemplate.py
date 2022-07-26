@@ -212,7 +212,7 @@ if claim_number != st.secrets.override.dataoverride and claim_number != st.secre
   
   elif selectname in existingnames:
     df = pd.DataFrame(data)
-    pos = df[df['Claim Number'] == claim_number]
+    df = df[df['Claim Number'] == claim_number]
     pos = df[df['Injured Parties Name'] == selectname]
     pos = list(df.index)
     st.write(pos)
