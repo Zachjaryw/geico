@@ -21,7 +21,7 @@ dbx = initializeToken(st.secrets.Token.token)
 data = fromDBX(dbx,st.secrets.filepath.rentonCAIC)
 
 claim_number = st.text_input('Enter 16 digit claim number',key = 0)
-if claim_number != st.secrets.override.dataoverride and claim_number != st.secrets.override.resetoverride:
+if claim_number != st.secrets.override.dataoverride and claim_number != st.secrets.override.resetoverride and not(claim_number == ''):
   df = pd.DataFrame(data)
   df = df[df['Claim Number'] == claim_number]
   if df.empty ==  True:
@@ -232,3 +232,5 @@ elif claim_number == st.secrets.override.resetoverride:
   toreset = st.text_input('To Reset Type "Reset CAIC Data"')
   if toreset == 'Reset CAIC Data':
     reset(dbx)
+elif claim_number == '':
+  st.warning('Enter claim number')
