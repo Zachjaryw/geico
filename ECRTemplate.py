@@ -7,7 +7,7 @@ import datetime as dt
 st.title('GEICO Claims ECR Add On Template')
 
 def reset(dbx):
-  toDBX(dbx,{'Date':[],
+  toDBX(dbx,{'Date Created':[],
              'Claim Number':[],
              'Injured Parties Name':[],
              'State':[],
@@ -204,7 +204,7 @@ if claim_number != st.secrets.override.dataoverride and claim_number != st.secre
 
         st.write(printvalue)
 
-        data['Date'].append(str(dt.date.today()))
+        data['Date Created'].append(str(dt.date.today()))
         data['Claim Number'].append(claim_number)
         data['State'].append(state)
         data['ECR Eligible'].append(ECREligable)
@@ -221,8 +221,9 @@ if claim_number != st.secrets.override.dataoverride and claim_number != st.secre
     pos = df[df['Injured Parties Name'] == selectname]
     pos = list(pos.index)
     display = pd.DataFrame(data).set_index(['Claim Number','Injured Parties Name'])
-    st.dataframe(display.iloc[pos[0]])
-  
+    display = display.iloc[pos[0]]
+    st.dataframe(display)
+    
   
   
 elif claim_number == st.secrets.override.dataoverride:
