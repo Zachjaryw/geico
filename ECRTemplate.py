@@ -204,10 +204,19 @@ if claim_number != st.secrets.override.dataoverride and claim_number != st.secre
       data['Question Responses'].append(printvalue)
       data['Reported Offer Made'].append("COLLECT FROM ATLAS")
       data['Reported Claim Settled'].append("COLLECT FROM ATLAS")
-
+      data['Injured Parties Name'].append(name)
 
       toDBX(dbx,data,st.secrets.filepath.rentonCAIC)
-
+  
+  elif selectname in existingnames:
+    df = pd.DataFrame(data)
+    pos = df[df['Claim Number'] == claim_number]
+    pos = df[df['Injured Parties Name'] == selectname]
+    pos = df.index.values()
+    st.write(pos)
+  
+  
+  
 elif claim_number == st.secrets.override.dataoverride:
   df = pd.DataFrame(data)
   st.dataframe(df)
@@ -215,7 +224,3 @@ elif claim_number == st.secrets.override.resetoverride:
   toreset = st.text_input('To Reset Type "Reset CAIC Data"')
   if toreset == 'Reset CAIC Data':
     reset(dbx)
-
-elif claim_number in data['Claim Number']:
-  st.warning('This claim has already been processed')
-
