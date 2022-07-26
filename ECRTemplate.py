@@ -113,7 +113,8 @@ if claim_number != st.secrets.override.dataoverride and claim_number != st.secre
       printvalue = ''
       printvalue = printvalue + f'''
   Claim Number: {claim_number}\n
-  State: {state}\n'''
+  State: {state}\n
+  Injured Parties Name: {name}\n'''
       ECREligable = ''
       if q8 == True:
         hes = False
@@ -200,7 +201,7 @@ if claim_number != st.secrets.override.dataoverride and claim_number != st.secre
       data['Date'].append(str(dt.date.today()))
       data['Claim Number'].append(claim_number)
       data['State'].append(state)
-      data['ECR Eligable'].append(ECREligable)
+      data['ECR Eligible'].append(ECREligable)
       data['Question Responses'].append(printvalue)
       data['Reported Offer Made'].append("COLLECT FROM ATLAS")
       data['Reported Claim Settled'].append("COLLECT FROM ATLAS")
