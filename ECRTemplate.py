@@ -220,7 +220,8 @@ if claim_number != st.secrets.override.dataoverride and claim_number != st.secre
     df = df[df['Claim Number'] == claim_number]
     pos = df[df['Injured Parties Name'] == selectname]
     pos = list(pos.index)
-    st.dataframe(pd.DataFrame(data).iloc[pos[0]].set_index(['Claim Number','Injured Parties Name']))
+    display = pd.DataFrame(data).set_index(['Claim Number','Injured Parties Name'])
+    st.dataframe(display.iloc[pos[0]])
   
   
   
