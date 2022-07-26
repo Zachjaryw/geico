@@ -28,8 +28,10 @@ if claim_number != st.secrets.override.dataoverride and claim_number != st.secre
     existingnames = []
   else:
     existingnames = df['Injured Parties Name'].tolist()
-  selectname = st.selectbox("Select IP's Name:",['New Injured Party'] + existingnames,key = 40)
-  if selectname == 'New Injured Party':
+  selectname = st.selectbox("Select IP's Name:",['---Select One---','New Injured Party'] + existingnames,key = 40)
+  if selectname == '---Select One---':
+    st.warning('Select an injured party or create new injured party report')
+  elif selectname == 'New Injured Party':
     name = st.text_input('Injured Parties Name')
     state = st.selectbox('Select state of accident',['Washington','Oregon'],key = 1)
     with st.container():
