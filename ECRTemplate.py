@@ -24,7 +24,7 @@ claim_number = st.text_input('Enter 16 digit claim number',key = 0)
 if claim_number != st.secrets.override.dataoverride and claim_number != st.secrets.override.resetoverride:
   df = pd.DataFrame(data)
   df = df[df['Claim Number'] == claim_number]
-  if df.empty():
+  if df.empty:
     names = []
   else:
     names = df['Injured Parties Name'].tolist()
