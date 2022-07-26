@@ -25,11 +25,12 @@ if claim_number != st.secrets.override.dataoverride and claim_number != st.secre
   df = pd.DataFrame(data)
   df = df[df['Claim Number'] == claim_number]
   if df.empty ==  True:
-    names = []
+    existingnames = []
   else:
-    names = df['Injured Parties Name'].tolist()
-  name = st.selectbox("Select IP's Name:",['New Injured Party'] + names,key = 40)
-  if name == 'New Injured Party':
+    existingnames = df['Injured Parties Name'].tolist()
+  selectname = st.selectbox("Select IP's Name:",['New Injured Party'] + existingnames,key = 40)
+  if selectname == 'New Injured Party':
+    name = st.text_input('Injured Parties Name')
     state = st.selectbox('Select state of accident',['Washington','Oregon'],key = 1)
     with st.container():
       q1 = st.checkbox('No Coverage Concerns?',False)
