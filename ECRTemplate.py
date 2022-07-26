@@ -35,6 +35,8 @@ if claim_number != st.secrets.override.dataoverride and claim_number != st.secre
     name = st.text_input('Injured Parties Name')
     if name in existingnames:
       st.warning('This individual has an existing ECR Report. Please select their name in the dropdown.')
+    elif name == '':
+      pass
     else:
       state = st.selectbox('Select state of accident',['Washington','Oregon'],key = 1)
       with st.container():
